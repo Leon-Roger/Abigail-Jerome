@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Promise - A Catholic Wedding Journey</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Global Styles */
+        :root {
+            --cream: #dfd3ca;
+            --light-brown: #ad8b72;
+            --white: #ffffff;
+            --dark-brown: #8e5f43;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        body {
+            background-color: var(--cream);
+            color: var(--dark-brown);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--dark-brown);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--light-brown);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: var(--dark-brown);
+            transform: translateY(-3px);
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--dark-brown);
+            display: inline-block;
+            background-color: var(--cream);
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: var(--light-brown);
+            z-index: 0;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark-brown);
+        }
+        
+        .logo span {
+            color: var(--light-brown);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--light-brown);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(223, 211, 202, 0.7), rgba(223, 211, 202, 0.7)), url('main.jpg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--dark-brown);
+            padding-top: 80px;
+        }
+        
+        .hero-content h1 {
+            font-size: 72px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .hero-content p {
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+        
+        .hero-content .date {
+            font-size: 28px;
+            font-weight: 600;
+            margin-top: 40px;
+        }
+        
+        /* Our Story Section */
+        .our-story {
+            background-color: var(--white);
+        }
+        
+        .story-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .story-text {
+            flex: 1;
+            min-width: 300px;
+            padding: 0 20px;
+        }
+        
+        .story-text h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        
+        .story-text p {
+            margin-bottom: 15px;
+        }
+        
+        .story-image {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+        }
+        
+        .story-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Proposal Section */
+        .proposal {
+            background-color: var(--cream);
+        }
+        
+        .proposal-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            height: 250px;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(142, 95, 67, 0.8);
+            color: var(--white);
+            padding: 15px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        /* Ceremony Section */
+        .ceremony {
+            background-color: var(--white);
+        }
+        
+        .schedule {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .event {
+            flex: 1;
+            min-width: 300px;
+            background-color: var(--cream);
+            margin: 10px;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .event i {
+            font-size: 40px;
+            color: var(--light-brown);
+            margin-bottom: 20px;
+        }
+        
+        .event h3 {
+            margin-bottom: 15px;
+        }
+        
+        .event p {
+            margin-bottom: 10px;
+        }
+        
+        /* Rituals Section */
+        .rituals {
+            background-color: var(--cream);
+        }
+        
+        .rituals-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .ritual-item {
+            margin-bottom: 40px;
+            position: relative;
+            padding-left: 80px;
+        }
+        
+        .ritual-number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 60px;
+            height: 60px;
+            background-color: var(--light-brown);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        .ritual-content h3 {
+            margin-bottom: 10px;
+        }
+        
+        /* Bridal Party Section */
+        .bridal-party {
+            background-color: var(--white);
+        }
+        
+        .party-members {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        .member {
+            width: 200px;
+            text-align: center;
+        }
+        
+        .member-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 15px;
+            border: 5px solid var(--cream);
+        }
+        
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .member h3 {
+            margin-bottom: 5px;
+        }
+        
+        .member p {
+            color: var(--light-brown);
+            font-style: italic;
+        }
+        
+        /* Gallery Section */
+        .gallery {
+            background-color: var(--cream);
+        }
+        
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .photo-item {
+            height: 250px;
+            overflow: hidden;
+            border-radius: 10px;
+            position: relative;
+        }
+        
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .photo-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* Live Stream Section */
+        .live-stream {
+            background-color: var(--white);
+            text-align: center;
+        }
+        
+        .stream-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .stream-container iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        /* RSVP Section */
+        .rsvp {
+            background-color: var(--cream);
+            text-align: center;
+        }
+        
+        .rsvp-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--light-brown);
+            border-radius: 5px;
+            background-color: var(--cream);
+        }
+        
+        .form-group textarea {
+            height: 120px;
+        }
+        
+        /* Prayer Section */
+        .prayer {
+            background-color: var(--white);
+            text-align: center;
+        }
+        
+        .prayer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .prayer-content p {
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        /* Downloadables Section */
+        .downloadables {
+            background-color: var(--cream);
+            text-align: center;
+        }
+        
+        .download-items {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        .download-item {
+            width: 150px;
+        }
+        
+        .download-icon {
+            width: 100px;
+            height: 100px;
+            background-color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 40px;
+            color: var(--light-brown);
+        }
+        
+        /* Instagram Wall Section */
+        .instagram-wall {
+            background-color: var(--white);
+            text-align: center;
+        }
+        
+        .wall-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .wall-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .wall-item {
+            height: 200px;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        
+        .wall-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-brown);
+            color: var(--white);
+            text-align: center;
+            padding: 30px 0;
+        }
+        
+        .footer-content p {
+            margin-bottom: 15px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--light-brown);
+            color: var(--white);
+            border-radius: 50%;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--cream);
+            color: var(--dark-brown);
+            transform: translateY(-3px);
+        }
+        
+        /* Countdown Timer */
+        .countdown {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        .countdown-item {
+            margin: 0 15px;
+            text-align: center;
+        }
+        
+        .countdown-number {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--dark-brown);
+            background-color: var(--white);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+        }
+        
+        .countdown-label {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.5s ease;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hero-content h1 {
+                font-size: 48px;
+            }
+            
+            .hero-content p {
+                font-size: 18px;
+            }
+            
+            .section-title h2 {
+                font-size: 28px;
+            }
+            
+            .countdown-number {
+                width: 60px;
+                height: 60px;
+                font-size: 24px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">The <span>Promise</span></a>
+                <ul class="nav-links">
+                    <li><a href="#our-story">Our Story</a></li>
+                    <li><a href="#proposal">The Proposal</a></li>
+                    <li><a href="#ceremony">Ceremony</a></li>
+                    <li><a href="#rituals">Rituals</a></li>
+                    <li><a href="#bridal-party">Bridal Party</a></li>
+                    <li><a href="#rsvp">RSVP</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Abigail &amp; Jerome</h1>
+            <p>Two Souls. One Promise.</p>
+            <div class="countdown">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="days">00</div>
+                    <div class="countdown-label">Days</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="hours">00</div>
+                    <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="minutes">00</div>
+                    <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="seconds">00</div>
+                    <div class="countdown-label">Seconds</div>
+                </div>
+            </div>
+            <p class="date">August 28, 2025 • St. Mary's Basilica, Bangalore</p>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="our-story" id="our-story">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Story</h2>
+            </div>
+            <div class="story-container">
+                <div class="story-text">
+                    <h3>How We Met</h3>
+                    <p>It was a warm Sunday afternoon after Mass when our paths first crossed. Abigail was volunteering at the church bake sale, and Jerome couldn't resist stopping by for some of her famous banana bread.</p>
+                    <p>What started as a simple conversation about recipes turned into hours of talking about our faith, families, and dreams for the future. We quickly realized we had grown up just a few neighborhoods apart but had never met until that moment.</p>
+                    <p>Over the next few months, our friendship grew through youth group activities, shared service projects, and long conversations after evening prayers. God's hand was clearly at work in bringing us together.</p>
+                </div>
+                <div class="story-image">
+                    <img src="ourstory.jpg" alt="Couple photo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proposal Section -->
+    <section class="proposal" id="proposal">
+        <div class="container">
+            <div class="section-title">
+                <h2>The Proposal</h2>
+            </div>
+            <div class="proposal-gallery">
+                <div class="gallery-item">
+                    <img src="proposal1.jpg" alt="Proposal moment">
+                    <div class="gallery-caption">The Moment</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="proposal4.jpg" alt="Ring">
+                    <div class="gallery-caption">The Ring</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="proposal3.jpg" alt="Celebration">
+                    <div class="gallery-caption">Celebration</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="proposal2.jpg" alt="Family">
+                    <div class="gallery-caption">With Family</div>
+                </div>
+            </div>
+            <div class="proposal-letter" style="margin-top: 40px; text-align: center;">
+                <h3>A Letter from Jerome</h3>
+                <p style="font-style: italic; max-width: 800px; margin: 20px auto;">
+                    "My dearest Abigail, from the moment I met you, I knew there was something special about you. Your faith, your kindness, and your beautiful heart drew me closer to you and to God. On that day at the grotto of Our Lady, as I got down on one knee, I wasn't just asking you to be my wife - I was asking you to walk with me toward heaven. Thank you for saying yes to this sacred journey together."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ceremony Section -->
+    <section class="ceremony" id="ceremony">
+        <div class="container">
+            <div class="section-title">
+                <h2>Ceremony & Reception</h2>
+            </div>
+            <div class="schedule">
+                <div class="event">
+                    <i class="fas fa-church"></i>
+                    <h3>Holy Matrimony</h3>
+                    <p>St. Mary's Basilica</p>
+                    <p>14 Brigade Road, Bangalore</p>
+                    <p>August 28, 2025</p>
+                    <p>10:00 AM</p>
+                    <p><strong>Dress Code:</strong> Traditional/Formal</p>
+                </div>
+                <div class="event">
+                    <i class="fas fa-glass-cheers"></i>
+                    <h3>Reception</h3>
+                    <p>The Grand Ballroom</p>
+                    <p>75 MG Road, Bangalore</p>
+                    <p>August 28, 2025</p>
+                    <p>6:30 PM onwards</p>
+                    <p><strong>Dress Code:</strong> Semi-formal</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="#" class="btn">View on Map</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rituals Section -->
+    <section class="rituals" id="rituals">
+        <div class="container">
+            <div class="section-title">
+                <h2>Catholic Wedding Rituals</h2>
+            </div>
+            <div class="rituals-container">
+                <div class="ritual-item">
+                    <div class="ritual-number">1</div>
+                    <div class="ritual-content">
+                        <h3>Entrance Procession</h3>
+                        <p>The wedding party enters the church, symbolizing the journey of life that the couple will now walk together. The bride is traditionally escorted by her father, representing his blessing and the transfer of care to her new husband.</p>
+                    </div>
+                </div>
+                <div class="ritual-item">
+                    <div class="ritual-number">2</div>
+                    <div class="ritual-content">
+                        <h3>Liturgy of the Word</h3>
+                        <p>Scripture readings that speak of God's plan for marriage, love, and family life. Typically includes an Old Testament reading, Psalm, New Testament reading, and Gospel passage.</p>
+                    </div>
+                </div>
+                <div class="ritual-item">
+                    <div class="ritual-number">3</div>
+                    <div class="ritual-content">
+                        <h3>Exchange of Vows</h3>
+                        <p>The couple publicly declares their intention to enter into marriage and exchanges wedding vows. In Catholic tradition, it is the couple themselves who confer the sacrament of marriage upon each other through these vows.</p>
+                    </div>
+                </div>
+                <div class="ritual-item">
+                    <div class="ritual-number">4</div>
+                    <div class="ritual-content">
+                        <h3>Blessing and Exchange of Rings</h3>
+                        <p>The rings are blessed as a sign of fidelity and enduring love. The circular shape symbolizes eternity, with no beginning or end, just as the couple's love should be.</p>
+                    </div>
+                </div>
+                <div class="ritual-item">
+                    <div class="ritual-number">5</div>
+                    <div class="ritual-content">
+                        <h3>Nuptial Blessing</h3>
+                        <p>A special prayer asking God's grace and blessing upon the couple's marriage. This beautiful prayer highlights the sacredness of the marital bond.</p>
+                    </div>
+                </div>
+                <div class="ritual-item">
+                    <div class="ritual-number">6</div>
+                    <div class="ritual-content">
+                        <h3>Lighting the Unity Candle (Optional)</h3>
+                        <p>The couple each takes a candle representing their individual lives and together lights a third candle, symbolizing their new life as one in Christ.</p>
+                    </div>
+                </div>
+                <div class="ritual-item">
+                    <div class="ritual-number">7</div>
+                    <div class="ritual-content">
+                        <h3>Offering Flowers to Mary</h3>
+                        <p>A traditional Indian Catholic practice where the couple places a bouquet of flowers at the statue of the Blessed Virgin Mary, seeking her intercession for their marriage.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bridal Party Section -->
+    <section class="bridal-party" id="bridal-party">
+        <div class="container">
+            <div class="section-title">
+                <h2>Bridesmaids & Groomsmen</h2>
+            </div>
+            <div class="party-members">
+                <div class="member">
+                    <div class="member-image">
+                        <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Maid of Honor">
+                    </div>
+                    <h3>Rebecca Fernandes</h3>
+                    <p>Maid of Honor</p>
+                </div>
+                <div class="member">
+                    <div class="member-image">
+                        <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Bridesmaid">
+                    </div>
+                    <h3>Priya D'Souza</h3>
+                    <p>Bridesmaid</p>
+                </div>
+                <div class="member">
+                    <div class="member-image">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Bridesmaid">
+                    </div>
+                    <h3>Maria Thomas</h3>
+                    <p>Bridesmaid</p>
+                </div>
+                <div class="member">
+                    <div class="member-image">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Best Man">
+                    </div>
+                    <h3>David Rodrigues</h3>
+                    <p>Best Man</p>
+                </div>
+                <div class="member">
+                    <div class="member-image">
+                        <img src="https://randomuser.me/api/portraits/men/55.jpg" alt="Groomsman">
+                    </div>
+                    <h3>Andrew Pereira</h3>
+                    <p>Groomsman</p>
+                </div>
+                <div class="member">
+                    <div class="member-image">
+                        <img src="https://randomuser.me/api/portraits/men/78.jpg" alt="Groomsman">
+                    </div>
+                    <h3>Kevin Lobo</h3>
+                    <p>Groomsman</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Journey in Frames</h2>
+            </div>
+            <div class="photo-grid">
+                <div class="photo-item">
+                    <img src="journey1.jpg" alt="Gallery photo 1">
+                </div>
+                <div class="photo-item">
+                    <img src="journey2.jpg" alt="Gallery photo 2">
+                </div>
+                <div class="photo-item">
+                    <img src="journey3.jpg" alt="Gallery photo 3">
+                </div>
+                <div class="photo-item">
+                    <img src="journey4.jpg" alt="Gallery photo 4">
+                </div>
+                <div class="photo-item">
+                    <img src="journey5.jpg" alt="Gallery photo 5">
+                </div>
+                <div class="photo-item">
+                    <img src="journey6.jpg" alt="Gallery photo 6">
+                </div>
+                <div class="photo-item">
+                    <img src="journey7.jpg" alt="Gallery photo 6">
+                </div>
+                <div class="photo-item">
+                    <img src="journey8.jpg" alt="Gallery photo 6">
+                </div>
+                <div class="photo-item">
+                    <img src="journey9.jpg" alt="Gallery photo 6">
+                </div>
+                <div class="photo-item">
+                    <img src="journey10.jpg" alt="Gallery photo 6">
+                </div>
+                <div class="photo-item">
+                    <img src="journey11.jpg" alt="Gallery photo 6">
+                </div>
+                <div class="photo-item">
+                    <img src="journey12.jpg" alt="Gallery photo 6">
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="#" class="btn">View More Photos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Stream Section -->
+    <section class="live-stream" id="live-stream">
+        <div class="container">
+            <div class="section-title">
+                <h2>Live Stream</h2>
+            </div>
+            <div class="stream-container">
+                <p>For those who cannot join us in person, we will be live streaming our wedding ceremony.</p>
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <p>The stream will begin 15 minutes before the ceremony starts. Please join us in spirit!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP Section -->
+    <section class="rsvp" id="rsvp">
+        <div class="container">
+            <div class="section-title">
+                <h2>RSVP</h2>
+            </div>
+            <div class="rsvp-form">
+                <form id="wedding-rsvp">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="guests">Number of Guests</label>
+                        <select id="guests" name="guests" required>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5+</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="attending">Will you be attending?</label>
+                        <select id="attending" name="attending" required>
+                            <option value="yes">Yes, with joy!</option>
+                            <option value="no">Regretfully, no</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="dietary">Dietary Restrictions</label>
+                        <input type="text" id="dietary" name="dietary" placeholder="Vegetarian, allergies, etc.">
+                    </div>
+                    <div class="form-group">
+                        <label for="song">Song Request for Reception</label>
+                        <input type="text" id="song" name="song" placeholder="Your favorite dance song!">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message for the Couple</label>
+                        <textarea id="message" name="message"></textarea>
+                    </div>
+                    <button type="submit" class="btn">Submit RSVP</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prayer Section -->
+    <section class="prayer" id="prayer">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Prayer & Gratitude</h2>
+            </div>
+            <div class="prayer-content">
+                <p>"Heavenly Father, we thank you for bringing us together in this sacrament of love. Bless our marriage with your grace, that we may grow closer to you and to each other every day. Help us to be patient, kind, and forgiving, reflecting your love in our home."</p>
+                <p>"We are deeply grateful to our parents, Fr. Joseph, our bridal party, and all our loved ones who have supported us on this journey. Your prayers and presence in our lives mean more than words can express."</p>
+                <p style="font-weight: 600;">- Abigail & Jerome</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Downloadables Section -->
+    <section class="downloadables" id="downloadables">
+        <div class="container">
+            <div class="section-title">
+                <h2>Downloadables</h2>
+            </div>
+            <div class="download-items">
+                <div class="download-item">
+                    <div class="download-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <p>Wedding Invite</p>
+                </div>
+                <div class="download-item">
+                    <div class="download-icon">
+                        <i class="fas fa-cross"></i>
+                    </div>
+                    <p>Prayer Card</p>
+                </div>
+                <div class="download-item">
+                    <div class="download-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <p>Location Map</p>
+                </div>
+                <div class="download-item">
+                    <div class="download-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <p>Wedding Playlist</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Wall Section -->
+    <section class="instagram-wall" id="instagram-wall">
+        <div class="container">
+            <div class="section-title">
+                <h2>Share Your Moments</h2>
+            </div>
+            <div class="wall-container">
+                <p>Use #AbigailAndJerome2025 to have your photos appear here!</p>
+                <div class="wall-grid">
+                    <div class="wall-item">
+                        <img src="moment1.jpg" alt="User photo">
+                    </div>
+                    <div class="wall-item">
+                        <img src="moment2.jpg" alt="User photo">
+                    </div>
+                    <div class="wall-item">
+                        <img src="moment3.jpg" alt="User photo">
+                    </div>
+                    <div class="wall-item">
+                        <img src="moment4.jpg" alt="User photo">
+                    </div>
+                    <div class="wall-item">
+                        <img src="moment5.jpg" alt="User photo">
+                    </div>
+                    <div class="wall-item">
+                        <img src="moment6.jpg" alt="User photo">
+                    </div>
+                    <div class="wall-item">
+                        <img src="moment7.jpg" alt="User photo">
+                    </div>
+                    <div class="wall-item">
+                        <img src="moment8.jpg" alt="User photo">
+                    </div>
+                    <div class="wall-item">
+                        <img src="moment9.jpg" alt="User photo">
+                    </div>
+                    <div class="wall-item">
+                        <img src="moment10.jpg" alt="User photo">
+                    </div>
+                    <div class="wall-item">
+                        <img src="moment11.jpg" alt="User photo">
+                    </div>
+                    <div class="wall-item">
+                        <img src="moment12.jpg" alt="User photo">
+                    </div>
+                    <div class="wall-item">
+                        <img src="moment13.jpg" alt="User photo">
+                    </div>
+                    <div class="wall-item">
+                        <img src="moment14.jpg" alt="User photo">
+                    </div>
+                    <div class="wall-item">
+                        <img src="moment15.jpg" alt="User photo">
+                    </div>
+                    <div class="wall-item">
+                        <img src="moment16.jpg" alt="User photo">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                </div>
+                <p>Abigail & Jerome</p>
+                <p>August 28, 2025 • Bangalore, India</p>
+                <p>With God as our witness, we make this promise.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Countdown Timer
+        function updateCountdown() {
+            const weddingDate = new Date('August 28, 2025 10:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            
+            if (distance < 0) {
+                clearInterval(countdownTimer);
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+            }
+        }
+        
+        updateCountdown();
+        const countdownTimer = setInterval(updateCountdown, 1000);
+        
+        // RSVP Form Submission
+        const rsvpForm = document.getElementById('wedding-rsvp');
+        rsvpForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Here you would typically send the form data to a server
+            // For this example, we'll just show an alert
+            alert('Thank you for your RSVP! We look forward to celebrating with you.');
+            rsvpForm.reset();
+        });
+        
+        // Gallery Lightbox (would need additional HTML/CSS)
+        // This is a placeholder for actual implementation
+        document.querySelectorAll('.gallery-item, .photo-item, .wall-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // In a real implementation, this would open a lightbox with the full image
+                console.log('Opening image viewer for:', this.querySelector('img').src);
+            });
+        });
+    </script>
+</body>
+</html>
